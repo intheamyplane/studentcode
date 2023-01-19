@@ -26,47 +26,70 @@ public class Exercises {
         3. 3 raccoons are playing in the woods. 2 go home to eat dinner. How
         many raccoons are left in the woods?
         */
+        int racoonsInWoods = 3;
+        int racoonsGoingHome = 2;
+        int racoonsLeft = racoonsInWoods - racoonsGoingHome;
 
 
         /* Exercise 4
         4. There are 5 flowers and 3 bees. How many less bees than flowers?
         */
 
+        int numberOfFlowers = 5;
+        int numberOfBees = 3;
+        int numberOfExtraFlowers = numberOfFlowers - numberOfBees;
 
         /* Exercise 5
         5. 1 lonely pigeon was eating breadcrumbs. Another pigeon came to eat
         breadcrumbs, too. How many pigeons are eating breadcrumbs now?
         */
+        int numberOfPidgeonsEatingBreadcrumbs = 1;
+        int numberOfPidgeonsJoining = 1;
+        int numberOfPidgeonsTotal = numberOfPidgeonsEatingBreadcrumbs + numberOfPidgeonsJoining;
 
 
         /* Exercise 6
         6. 3 owls were sitting on the fence. 2 more owls joined them. How many
         owls are on the fence now?
         */
-
+        int numberOfOwlsSitting = 3;
+        int numberOfOwlsJoining = 2;
+        int numberOfOwlsTotal = numberOfOwlsSitting + numberOfOwlsJoining;
+    
 
         /* Exercise 7
         7. 2 beavers were working on their home. 1 went for a swim. How many
         beavers are still working on their home?
         */
-
+        int numberOfBeaversWorking = 2;
+        int numberOfBeaversSwimming = 1;
+        int numberOfBeaversRemaining = numberOfBeaversWorking - numberOfBeaversSwimming;
 
         /* Exercise 8
         8. 2 toucans are sitting on a tree limb. 1 more toucan joins them. How
         many toucans in all?
         */
-
+        int numberOfToucansSitting = 2;
+        int numberOfToucansJoining = 1;
+        int numberOfToucansTotal = numberOfToucansSitting + numberOfToucansJoining;
 
         /* Exercise 9
         9. There are 4 squirrels in a tree with 2 nuts. How many more squirrels
         are there than nuts?
         */
-
+        int numberOfSquirrels = 4;
+        int numberOfNuts = 2;
+        int numberOfExtraSquirrels = numberOfSquirrels - numberOfNuts;
 
         /* Exercise 10
         10. Mrs. Hilt found a quarter, 1 dime, and 2 nickels. How much money did
         she find?
         */
+        int centsInQuarter = 25;
+        int centsInNickle = 5;
+        int centsInDime = 10;
+        int centsFound = centsInDime + centsInQuarter + centsInNickle *2;
+        
 
 
         /* Exercise 11
