@@ -25,8 +25,12 @@ public class Exercise03_ShippingTotal {
      * calculateShippingRate(45) ➔ 0.75
      */
     public double calculateShippingRate(int weightPounds) {
-        return 0.0;
-    }
+        if (weightPounds <= MAX_WEIGHT_POUNDS) {
+            return UP_TO_40_LB_RATE;
+        } else {
+            return OVER_40_LB_RATE; }
+        }
+
 
     /*
      * Scamper Shipping Company charges $0.50 per pound for items up to and
@@ -35,7 +39,7 @@ public class Exercise03_ShippingTotal {
      * weight in pounds.
      * 
      * You may use calculateShippingRate() in your solution.
-     * 
+     *
      * Examples:
      * calculateShippingTotal(10) ➔ 5.0
      * calculateShippingTotal(25) ➔ 12.5
@@ -43,7 +47,11 @@ public class Exercise03_ShippingTotal {
      * calculateShippingTotal(45) ➔ 33.75
      */
     public double calculateShippingTotal(int weightPounds) {
-        return 0.0;
+        if (weightPounds <= MAX_WEIGHT_POUNDS) {
+            return weightPounds*UP_TO_40_LB_RATE;
+        } else {
+            return weightPounds*OVER_40_LB_RATE;
+        }
     }
 
     /*
@@ -65,7 +73,11 @@ public class Exercise03_ShippingTotal {
      * calculateShippingTotal(45, true) ➔ 30.375
      */
     public double calculateShippingTotal(int weightPounds, boolean hasDiscount) {
-        return 0.0;
+        if (hasDiscount == true) {
+        return calculateShippingTotal(weightPounds)*0.9;
+        }else {
+            return calculateShippingTotal(weightPounds);
+        }
     }
 
 }
