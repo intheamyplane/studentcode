@@ -80,7 +80,12 @@ public class Exercise07_StoreHours {
     isStoreOpen(9, 'S', true) ➔ true
      */
     public boolean isStoreOpen(int currentHour, char currentDay, boolean isSummer) {
-        if (isSummer == true && currentHour >= 8
-        return false;
+        if (isSummer == true && ((currentDay == 'M' && currentHour >= 8 && currentHour< 17) || (currentDay == 'W' && currentHour >=8 && currentHour < 20) || (currentDay== 'F' && currentHour >=8 && currentHour <17) || currentDay == 'S' && currentHour >=9 && currentHour <15)  ) {
+            return true;
+        } else if (isSummer==false && (currentHour >=8 && currentHour < 17) && (currentDay == 'M' || currentDay == 'W' || currentDay == 'F')){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
