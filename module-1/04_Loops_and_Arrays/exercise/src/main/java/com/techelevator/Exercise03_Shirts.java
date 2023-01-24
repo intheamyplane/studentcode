@@ -38,26 +38,20 @@ public class Exercise03_Shirts {
     buildBulkOrder(0) → []
      */
     public char[] buildBulkOrder(int numberOfShirts) {
-        char [] bulkOrder = new char [numberOfShirts];
-        for (int i=0; i<bulkOrder.length; i += 3) {
-            if (i >= bulkOrder.length) {
-                break;
-            } else {
-                bulkOrder[i] = 'S';
-            }
-            if (i + 1 >= bulkOrder.length) {
-                break;
-            } else {
-                bulkOrder[i + 1] = 'M';
-            }
-            if (i + 2 >= bulkOrder.length) {
-                break;
-            } else {
-                bulkOrder[i + 2] = 'L';
-            }
+        char[] bulkOrder = new char[numberOfShirts];
+        for(int i= 0; i<bulkOrder.length; i++) {
+            int remainder = i % 3;
+        if(remainder == 0) {
+            bulkOrder[i] = SMALL_TSHIRT;
+        } else if (remainder == 1) {
+            bulkOrder[i] = MEDIUM_TSHIRT;
+        } else {
+            bulkOrder[i] = LARGE_TSHIRT;
+        }
 
         }
-            return bulkOrder;
+        return bulkOrder;
+
 
     }
 

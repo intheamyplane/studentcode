@@ -52,16 +52,17 @@ public class Exercise05_Weather {
 	hottestDay([55]) → 55
     */
     public int hottestDay(int[] dailyHighs) {
-        int hotDay = 0;
+        int hotDay = dailyHighs[0];
         for (int i = 0; i < dailyHighs.length; i++) {
-            if (dailyHighs[i] < hotDay) {
-
-
+            if (dailyHighs[i] > hotDay) {
+                hotDay = dailyHighs[i];
             }
 
         }
         return hotDay;
+
     }
+
 
     /*
     GaleForce discovered an equipment malfunction. Every other reading, starting with the first,
@@ -78,17 +79,14 @@ public class Exercise05_Weather {
 	fixTemperatures([]) → []
      */
     public int[] fixTemperatures(int[] temperatures) {
-       int fixedTemp = 0;
-        for (int i = 0; i< temperatures.length; i ++) {
-            if (i % 2 ==0) {
-                fixedTemp = i+=2;
-            }
-        }
-            return temperatures;
+        for (int i = 0; i < temperatures.length; i += 2) {
+            temperatures[i] = temperatures[i] + 2;
         }
 
 
+        return temperatures;
     }
+}
 
 
 
