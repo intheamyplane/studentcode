@@ -26,9 +26,17 @@ public class Exercise02_BoardingGate {
     generateSeatingChart(5) → [AVAILABLE, AVAILABLE, AVAILABLE, AVAILABLE, AVAILABLE]
     generateSeatingChart(2) → [AVAILABLE, AVAILABLE]
      */
+
+
     public boolean[] generateSeatingChart(int numberOfSeats) {
-        return new boolean[] {};
+        int seatsOpen = 0;
+
+
+        return new boolean[]{};
     }
+
+
+
 
     /*
     Once passengers begin boarding the plane, gate attendants need a way to determine how many available

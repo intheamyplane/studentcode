@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import com.sun.tools.javac.Main;
+
 public class Exercise01_StoreOrders {
 
     /*
@@ -43,7 +45,8 @@ public class Exercise01_StoreOrders {
 	 createOrder() → [10, 40, 31, 41]
      */
     public int[] createOrder() {
-        return new int[] {};
+
+        return new int[]{10, 40, 31, 41};
     }
 
     /*
@@ -61,7 +64,16 @@ public class Exercise01_StoreOrders {
     getCalzoneSales([]) → 0
      */
     public int getCalzoneSales(int[] orders) {
-        return 0;
+        int numberCalzones = 0;
+        for (int i = 0; i < orders.length; i++) {
+
+            if (orders[i] == CALZONE) {
+                numberCalzones++;
+
+            }
+
+        }
+        return numberCalzones;
     }
 
     /*
@@ -79,6 +91,19 @@ public class Exercise01_StoreOrders {
     getCheesePizzaRevenue([SMALL_PEPPERONI, MEDIUM_PEPPERONI]) → 0
      */
     public int getCheesePizzaRevenue(int[] orders) {
-        return 0;
+        int total = 0;
+        for (int i = 0; i < orders.length; i++) {
+            if (orders[i] == SMALL_CHEESE) {
+                total +=8;
+            } else if (orders[i] == MEDIUM_CHEESE) {
+                total +=11;
+            } else if (orders[i] == LARGE_CHEESE) {
+                total+=14;
+            }
+        }
+        return total;
     }
+
+
 }
+
