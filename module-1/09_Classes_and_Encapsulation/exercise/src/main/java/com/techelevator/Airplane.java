@@ -53,7 +53,7 @@ public class Airplane {
 
 
         if(forFirstClass){
-            if(this.availableFirstClassSeats<=0){
+            if(this.availableFirstClassSeats<totalNumberSeats) {
                 return false;
             }else{
                 this.bookedFirstClassSeats+=totalNumberSeats;
@@ -61,7 +61,7 @@ public class Airplane {
                 }
 
         }else {
-            if (this.availableCoachSeats <=0) {
+            if (this.availableCoachSeats<totalNumberSeats) {
                 return false;
             } else {
                 this.bookedCoachSeats += totalNumberSeats;

@@ -19,28 +19,28 @@ public class Elevator {
 
     //constructor
     public Elevator(int numberOfLevels){
-        this.currentFloor=1;
+        this.currentFloor=numberOfLevels;
     }
 
     //methods
     public void openDoor(){
-        if(this.isDoorOpen()==false){
-            this.doorOpen=true;
+        if(isDoorOpen()==false){
+            doorOpen=true;
         }
     }
     public void closeDoor(){
-        if(this.isDoorOpen()==true){
-            this.doorOpen=false;
+        if(isDoorOpen()==true){
+            doorOpen=false;
         }
     }
     public void goUp(int desiredFloor){
-        if(this.isDoorOpen()==false&&this.currentFloor<=this.numberOfFloors-1&&this.currentFloor<desiredFloor){
-            this.currentFloor=desiredFloor;
+        if(isDoorOpen()==false && currentFloor<=numberOfFloors-1 && currentFloor<desiredFloor && desiredFloor<=numberOfFloors){
+            currentFloor=desiredFloor;
         }
     }
     public void goDown(int desiredFloor){
-        if(isDoorOpen()==false&&this.currentFloor>=1&&this.currentFloor>desiredFloor){
-            this.currentFloor=desiredFloor;
+        if(isDoorOpen()==false && currentFloor>=1 && currentFloor>desiredFloor){
+            currentFloor=desiredFloor;
         }
     }
 

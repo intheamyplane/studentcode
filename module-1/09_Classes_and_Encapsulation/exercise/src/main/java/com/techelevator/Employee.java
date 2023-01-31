@@ -7,8 +7,10 @@ public class Employee {
     private String fullName;
     private String department;
     private double annualSalary;
+
+
 //employeeID
-    public int getEmployeeID(){
+    public int getEmployeeId(){
         return employeeID;
     }
 //firstName
@@ -49,6 +51,7 @@ public class Employee {
     //method
 
     public void raiseSalary(double percent) {
+        annualSalary= annualSalary+(annualSalary*(percent/100));
 
     }
 
