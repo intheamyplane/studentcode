@@ -1,12 +1,13 @@
 package com.techelevator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BankCustomer implements Accountable{
     private String name;
     private String address;
     private String phoneNumber;
-    private List<Accountable> accounts;
+    private List<Accountable> accounts = new ArrayList<>();
 
     //getters&setters
 
@@ -31,23 +32,28 @@ public class BankCustomer implements Accountable{
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Accountable> getAccountsCustomer() {
-        return accounts;
-    }
+
 
     //start method
 
 
     public void getAccounts(){
 
-        return Accountable;
+
+
     }
 
 
 
     public void addAccount(Accountable newAccount){
+        accounts.add(newAccount);
 
     }
+    public boolean isVip() {
+        return false;
+
+    }
+
 
     @Override
     public int getBalance() {
