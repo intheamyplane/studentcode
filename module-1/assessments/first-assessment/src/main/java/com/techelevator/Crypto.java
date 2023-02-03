@@ -72,7 +72,7 @@ public class Crypto {
         alphabet[25] = "Z";
 
         String[] encryptedAlphabet = new String[26];
-        //NJFQAPSRXGDOTEUHMVBCWKZILY
+
         encryptedAlphabet[0] = "N";
         encryptedAlphabet[1] = "J";
         encryptedAlphabet[2] = "F";
@@ -100,18 +100,17 @@ public class Crypto {
         encryptedAlphabet[24] = "L";
         encryptedAlphabet[25] = "Y";
 
+        String encryptedString = "";
         for (int i = 0; i < strToEncrypt.length(); i++) {
-           
-            if (strToEncrypt.substring(i, i + 1) == alphabet[i]) {
-                String encryptedString = (strToEncrypt.replace(alphabet[i], encryptedAlphabet[i]));
 
 
+            encryptedString += (strToEncrypt.replace(alphabet[i], encryptedAlphabet[i]));
 
 
-            }
-            return encryptedString;
         }
+        return encryptedString;
     }
+
 
     /**
      * Decrypts and returns "strToDecrypt" using the cypher above
