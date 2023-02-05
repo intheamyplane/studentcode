@@ -399,8 +399,26 @@ public class Exercises {
      stringX("xabxxxcdx") → "xabcdx"
      */
     public String stringX(String str) {
-        String newString;
-        return null;
+        String newString = "";
+        for(int i =0;i<str.length();i++){
+            if(str.substring(i,i+1)=="x"){
+
+                if(i==0){
+                    newString= newString+str.substring(i,i+1);
+                }
+                else if(i==str.length()-1){
+                        newString = newString+str.substring(i,i+1);
+                }else {continue;}
+
+
+            }else {
+                newString= newString + str.substring(i,i+1);
+            }
+
+
+
+            }
+        return newString;
     }
 
     /*
