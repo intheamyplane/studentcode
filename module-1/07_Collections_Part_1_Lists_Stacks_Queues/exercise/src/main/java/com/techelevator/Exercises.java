@@ -79,10 +79,10 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 81238
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		int largestInt = integerList.indexOf(0);
+		int largestInt = integerList.get(0);
 		for (int i = 1; i < integerList.size(); i++) {
-			if (integerList.indexOf(i) > largestInt) {
-				largestInt = integerList.indexOf(i);
+			if (integerList.get(i) > largestInt) {
+				largestInt = integerList.get(i);
 
 			}
 
@@ -115,6 +115,7 @@ public class Exercises {
 	 foundIntTwice( [9, 9, 44, 2, 88, 9], 9) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
+
 
 	return false;
 	}

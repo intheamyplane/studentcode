@@ -259,15 +259,18 @@ public class Exercises {
 	 */
 	public Map<String, Boolean> wordMultiple(String[] words) {
 		Map<String, Boolean> stringAppearsTwiceIsTrue = new HashMap<String, Boolean>();
-		for(int i=0; i<words.length;i++){
-			String word = words[i];
-			int currentCount = 0;
+		for(String word: words){
+			if(stringAppearsTwiceIsTrue.containsKey(word)){
+				stringAppearsTwiceIsTrue.put(word, true);
+			} else {
+				stringAppearsTwiceIsTrue.put(word, false);
+			}
 
 
 
 
 		}
-		return null ;
+		return stringAppearsTwiceIsTrue ;
 
 
 	}

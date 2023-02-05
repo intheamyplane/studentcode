@@ -217,11 +217,13 @@ public class Exercises {
      endsLy("oddy") → false
      */
     public boolean endsLy(String str) {
-        if (str.substring(str.length() - 2) == "ly") {
-            return true;
-        } else {
+        if(str.length()<2){
             return false;
+        }else {
+            return str.endsWith("ly");
         }
+
+
     }
 
     /*
@@ -232,7 +234,8 @@ public class Exercises {
      nTwice("Chocolate", 1) → "Ce"
      */
     public String nTwice(String str, int n) {
-        return null;
+        return str.substring(0, n)+ str.substring(str.length()-n);
+
     }
 
     /*
@@ -244,13 +247,13 @@ public class Exercises {
      twoChar("java", 3) → "ja"
      */
     public String twoChar(String str, int n) {
-        String answer = str.substring(n, n + 2);
-        if (n >= 2 && n < str.length()) {
-            return answer;
-        } else {
+//        String answer = str.substring(n, n + 2);
+        if (n < 0 || n + 2 > str.length()) {
             return str.substring(0, 2);
         }
+        return str.substring(n, n + 2);
     }
+
 
     /*
      Given a string of odd length, return the string length 3 from its middle, so "Candy" yields "and".
@@ -275,13 +278,10 @@ public class Exercises {
      hasBad("xxbadxx") → false
      */
     public boolean hasBad(String str) {
-        String one = str.substring(0, 3);
-        String two = str.substring(1, 4);
-
-        if (str.length() >= 3 && (one.equals("bad") || two.equals("bad"))) {
-            return true;
-        } else {
+        if (str.length() < 3) {
             return false;
+        } else {
+            return str.startsWith("bad") || str.substring(1).startsWith("bad");
         }
     }
 
@@ -292,7 +292,7 @@ public class Exercises {
      stringTimes("Hi", 1) → "Hi"
      */
     public String stringTimes(String str, int n) {
-        return null;
+        return str.repeat(n);
     }
 
     /*
@@ -303,7 +303,13 @@ public class Exercises {
      frontTimes("Abc", 3) → "AbcAbcAbc"
      */
     public String frontTimes(String str, int n) {
-       return null;
+    //    String answer= str.substring(0,3);
+        if(str.length()<=3){
+       return str.repeat(n);
+        }
+        else {
+            return str.substring(0,3).repeat(n);
+        }
      }
 
 
@@ -314,7 +320,13 @@ public class Exercises {
      countXX("xxxx") →
      */
     public int countXX(String str) {
-        return 0;
+        int count = 0;
+        for(int i=0; i<str.length()-1; i++){
+            if(str.substring(i, i+2).equals("xx")) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /*
@@ -324,6 +336,13 @@ public class Exercises {
      doubleX("xxxxx") → true
      */
     public boolean doubleX(String str) {
+        int instanceX = str.indexOf("x");
+        if(instanceX<str.length()-1){
+            return str.charAt(instanceX+1) == 'x';
+
+
+
+        }
         return false;
     }
 
@@ -334,7 +353,13 @@ public class Exercises {
      stringBits("Heeololeo") → "Hello"
      */
     public String stringBits(String str) {
-        return null;
+      String newString = "";
+        for(int i=0; i<str.length();i++) {
+            if(i%2==0){
+                newString+= str.charAt(i);
+            }
+        }
+        return newString;
     }
 
     /*
@@ -344,7 +369,11 @@ public class Exercises {
      stringSplosion("ab") → "aab"
      */
     public String stringSplosion(String str) {
-        return null;
+        String newString = "";
+        for(int i=0; i<=str.length();i++){
+            newString+= str.substring(0,i);
+        }
+        return newString;
     }
 
     /*
@@ -355,6 +384,10 @@ public class Exercises {
      last2("axxxaaxx") → 2
      */
     public int last2(String str) {
+        int count = 0;
+        for(int i=0; i<=str.length();i++){
+
+        }
         return 0;
     }
 
@@ -366,6 +399,7 @@ public class Exercises {
      stringX("xabxxxcdx") → "xabcdx"
      */
     public String stringX(String str) {
+        String newString;
         return null;
     }
 
@@ -387,6 +421,7 @@ public class Exercises {
      stringYak("yak123ya") → "123ya"
      */
     public String stringYak(String str) {
+
         return null;
     }
 

@@ -39,9 +39,20 @@ public class Tutorial {
         System.out.println("The highest temperature is " + highestTemperatureValue);
         System.out.println("The highest temperature is in " + (highestTemperatureIndex + 1) + " days");
 
+        int answer = 0;
+        for(int i = 0; i < 10; i++) {
+            if(i % 2 == 0) {
+                answer = answer + 1;
+            }
+        }
+        System.out.print(answer);
+
 
 
 
 
     }
 }
+
+
+
