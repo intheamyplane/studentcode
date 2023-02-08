@@ -115,11 +115,18 @@ public class Exercises {
 	 foundIntTwice( [9, 9, 44, 2, 88, 9], 9) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
+		int count =0;
+		for(Integer i: integerList) {
+			if (i == intToFind){
+				count++;
+			}
+		}
+		if(count>=2){
+			return true;
+		} else {return false;}
 
 
-	return false;
 	}
-
 
 
 	/*
@@ -135,26 +142,26 @@ public class Exercises {
 	HINT: To convert an Integer x to a String, you can use x.toString() in your code. For example, if x = 1, then x.toString() returns "1."
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		List<String> intAsStrings = new ArrayList<>();
+		List<String> fizzBuzz = new ArrayList<>();
 		for(int i=0;i<integerArray.length;i++){
 
 
-			if(integerArray[i%3]==0&&integerArray[i%5]==0){
-				intAsStrings.add("FizzBuzz");
+			if(integerArray[i]%3==0&&integerArray[i]%5==0){
+				fizzBuzz.add("FizzBuzz");
 
 			}
 			else if(integerArray[i%3]==0) {
-				intAsStrings.add("Fizz");
+				fizzBuzz.add("Fizz");
 			} else if(integerArray[i%5]==0) {
-				intAsStrings.add("Buzz");
+				fizzBuzz.add("Buzz");
 
 
 			}else {
-				intAsStrings.add(integerArray[i].toString());
+				fizzBuzz.add(integerArray[i].toString());
 			}
 		}
 
-	return intAsStrings;
+	return fizzBuzz;
 
 
 	}

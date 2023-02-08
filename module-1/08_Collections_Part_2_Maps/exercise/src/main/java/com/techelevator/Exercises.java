@@ -152,18 +152,6 @@ public class Exercises {
 			double transferAmtPeter = 0;
 			double transferAmtPaul = 0;
 
-			if (peterPaul.get("Peter") % 2 == 1) {
-				transferAmtPeter = (peterPaul.get("Peter") - 1) / 4;
-
-			} else {
-				transferAmtPeter = peterPaul.get("Peter") / 4;
-			}
-			if (peterPaul.get("Paul") % 2 == 1) {
-				transferAmtPaul = (peterPaul.get("Paul") - 1 / 4);
-			} else {
-				transferAmtPaul = peterPaul.get("Paul") / 4;
-			}
-
 
 		}
 		return null;
@@ -287,7 +275,13 @@ public class Exercises {
 	 */
 	public Map<String, Integer> consolidateInventory(Map<String, Integer> mainWarehouse,
 			Map<String, Integer> remoteWarehouse) {
+
+		Map<String,Integer>combineWarehouses = new HashMap<>();
+
 		for(Map.Entry<String, Integer> wareHouseCheck : remoteWarehouse.entrySet()) {
+			String key = wareHouseCheck.getKey();
+			
+
 			if(mainWarehouse.containsKey(wareHouseCheck.getKey())) {
 				int valueMainKey= mainWarehouse.get(wareHouseCheck.getKey());
 

@@ -20,7 +20,7 @@ public class WordSearch {
 		System.out.println("What is the fully qualified name of the file that should be searched?");
 		String filePath = userInput.nextLine();
 
-		File userTextToSearch = new File(filePath);
+		File userFile = new File(filePath);
 
 		System.out.println("What is the search word you are looking for?");
 		String searchWord = userInput.nextLine();
@@ -28,14 +28,19 @@ public class WordSearch {
 		System.out.println("Should the search be case sensitive? (Y\\N)");
 		String caseSensitiveSearchWord = userInput.nextLine();
 
-		if(caseSensitiveSearchWord=="Y"){
-		boolean caseSensitive = true;}
+
+		boolean caseSensitive = true;
+
+		if(caseSensitiveSearchWord=="N"){
+		caseSensitive=false;}
 
 
 		boolean inUserText = false;
 		int lineCount = 0;
 
-		try (Scanner inputStream = new Scanner(userTextToSearch)) {
+
+
+		try (Scanner inputStream = new Scanner(userFile)) {
 			while (inputStream.hasNextLine()) {
 				String lineOfText = inputStream.nextLine();
 				if (lineOfText.startsWith(BEGINNING)) {
@@ -46,12 +51,14 @@ public class WordSearch {
 					break;
 				}
 
-				if (inUserText) {
+				if (inUserText&&lineOfText.contains(searchWord)==false) {
 					lineCount++;
 
 
+
 				}
-				if (lineOfText.contains(searchWord)) {
+				if (inUserText&& lineOfText.contains(searchWord)) {
+					lineCount++;
 					System.out.println(lineCount + ") " + lineOfText);
 
 
@@ -59,7 +66,8 @@ public class WordSearch {
 
 			}
 			}catch (FileNotFoundException e){
-			System.out.println("file not found"+ userTextToSearch.getAbsolutePath());
+			System.out.println("file not found"+ userFile.getAbsolutePath());
 		}
+			
 		}
 	}
