@@ -27,50 +27,37 @@ public class FindAndReplace {
         String pathToSourceFile = userInput.nextLine();
 
         System.out.println("What is the destination file?");
+        String pathToDestinationFile = userInput.nextLine();
 
 
         File sourceFile = new File(pathToSourceFile);
-        File convertedFile = getConvertedFile(sourceFile);
+        File destinationFile = new File(pathToDestinationFile);
 
-        try (Scanner sourceInput = new Scanner(sourceFile); PrintWriter writer = new PrintWriter(convertedFile)) {
+
+        try (Scanner sourceInput = new Scanner(sourceFile); PrintWriter writer = new PrintWriter(destinationFile)) {
 
             while (sourceInput.hasNextLine()) {
 
                 String lineOfInput = sourceInput.nextLine();
-                writer.println(lineOfInput.replace(searchWord, replacementWord));
-
-
+                String convertedLine = "";
+                if (lineOfInput.contains(searchWord)) {
+                    convertedLine = lineOfInput.replaceAll(searchWord, replacementWord);
+                } else {
+                    convertedLine = lineOfInput;
+                }
+                writer.println(convertedLine);
             }
+
+
         } catch (FileNotFoundException e) {
 
-            System.out.println("The file was not found: " + sourceFile.getAbsolutePath());
+            System.out.println("The file was not found");
 
-        }
-
-
-        static private File getConvertedFile(File sourceFile) {
-
-            String filePath = sourceFile.getAbsolutePath();
-
-            int dotIndex = filePath.lastIndexOf('.');
-            String convertedPath;
-            if (dotIndex >= 0) {
-                convertedPath = filePath.substring(0, dotIndex) + ".screaming." + filePath.substring(dotIndex + 1);
-            } else {
-                convertedPath = filePath + ".screaming";
-            }
-            return new File(convertedPath);
-        }
-
-
-
-        }
-
-
-
-
-
-
+        }return null;
     }
+}
+
+
+
 
 
