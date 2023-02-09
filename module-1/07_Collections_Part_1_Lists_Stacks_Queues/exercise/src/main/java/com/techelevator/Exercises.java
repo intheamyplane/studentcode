@@ -150,9 +150,9 @@ public class Exercises {
 				fizzBuzz.add("FizzBuzz");
 
 			}
-			else if(integerArray[i%3]==0) {
+			else if(integerArray[i]%3==0) {
 				fizzBuzz.add("Fizz");
-			} else if(integerArray[i%5]==0) {
+			} else if(integerArray[i]%5==0) {
 				fizzBuzz.add("Buzz");
 
 
