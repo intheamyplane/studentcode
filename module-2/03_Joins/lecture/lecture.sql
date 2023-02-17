@@ -21,19 +21,35 @@
 
 
 -- Write a query to retrieve the names and populations of all the cities in the Midwest census region.
-
+SELECT city_name, city.population
+FROM city
+	INNER JOIN state ON state.state_abbreviation = city.state_abbreviation
+WHERE census_region = 'Midwest';
 
 -- Write a query to retrieve the number of cities in the city table for each state in the Midwest census region.
-
+SELECT state_name, COUNT(city_name) AS numCities
+FROM city
+	INNER JOIN state ON state.state_abbreviation = city.state_abbreviation
+WHERE census_region = 'Midwest'
+GROUP BY state_name;
 
 -- Modify the previous query to sort the results by the number of cities in descending order.
-
+SELECT state_name, COUNT(city_name) AS numCities
+FROM city
+	INNER JOIN state ON state.state_abbreviation = city.state_abbreviation
+WHERE census_region = 'Midwest'
+GROUP BY state_name
+ORDER BY numCities DESC;
 
 
 -- LEFT JOIN
 
 -- Write a query to retrieve the state name and the earliest date a park was established in that state (or territory) for every record in the state table that has park records associated with it.
-
+SELECT state_name, MIN(date_established)
+FROM state
+	INNER JOIN park_state ON state.state_abbreviation = park_state.state_abbreviation
+	INNER JOIN park ON park.park_id = park_state.park_id
+GROUP BY state_name;
 
 -- Modify the previous query so the results include entries for all the records in the state table, even if they have no park records associated with them.
 

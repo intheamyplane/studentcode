@@ -15,18 +15,36 @@ public class Tutorial {
                 System.out.println("**************************************");
 
                 // Step Two: Declare and initialize Weather Station variables
+                int highTemperatureF = 55;
+                boolean precipitationExpected = true;
+                final int FREEZING_TEMPERATURE_F = 32;
+
 
 
 
                 // Step Three: Report today's expected conditions to the user.
 
+                System.out.println("Expected high temperature: " + highTemperatureF + "\u00b0F");
+                if (precipitationExpected){
+                        System.out.println("The chances of precipitation is high.");
+                }else {
+                        System.out.println("The chance of precipitation is low");
+                }
+
 
 
                 // Step Four: Determine if the user should bring a coat. (when the temperature < 65°F)
+                if (highTemperatureF < 65){
+                        System.out.println("* Don't forget to bring a coat today.");
+                }
 
 
 
                 // Step Five: Determine if the user should bring an umbrella
+                boolean isAboveFreezing = highTemperatureF > FREEZING_TEMPERATURE_F;
+                if(precipitationExpected && isAboveFreezing){
+                        System.out.println("* Be sure to pack an umbrella!");
+                }
 
 
 
