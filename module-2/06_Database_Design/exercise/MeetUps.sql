@@ -56,12 +56,18 @@ VALUES ('Troi', 'Deanna', 'MarinaSirtis@gmail.com', '19590329', false),
 		('OBrien', 'Miles', 'ColmMeaney@gmail.com', '19530530', true),
 		('Janeway', 'Kathryn', 'KateMulgrew@gmail.com','19550429', true),
 		('Kim', 'Harry', 'GarrettWang@gmail.com', '19681215', false);
+		
+INSERT INTO member (last_name, first_name, member_email, member_dob, flag_for_emails)
+VALUES ('Chapel', 'Christine', 'MajelBarrett@gmail.com', '19390223', true),
+		('Earp', 'Wyatt', 'RonSoble@gmail.com','19320328', true);
 
 
 INSERT INTO interest_group (group_name)
 VALUES ('TNG Club'),
 		('DS9 Club'),
 		('Voyager Club');
+INSERT INTO interest_group (group_name)
+VALUES ('TOS Club');
 		
 INSERT INTO event (event_name, description, start_date_and_time, duration_in_minutes, group_id)
 VALUES ('TNG Reunion', 'Reunion for all of those who served on the Enterprise!', '2023-10-05 14:01:10-08', 210, (SELECT group_id FROM interest_group WHERE group_name = 'TNG Club'));
@@ -71,11 +77,87 @@ VALUES ('DS9 Reunion', 'Reunion for all of those who served, worked, or lived on
 		 ('Voyager Reunion', 'Reunion for all of those who were on the Voyager as it traversed the delta quadrant!', '2023-06-05 14:01:10-08', 210, (SELECT group_id FROM interest_group WHERE group_name = 'Voyager Club'));
 		 
 
-		 
+INSERT INTO event (event_name, description, start_date_and_time, duration_in_minutes, group_id)
+VALUES ('TOS Reunion', 'Reunion for all the OGs left', '2023-04-05 14:01:10-08', 210, (SELECT group_id FROM interest_group WHERE group_name = 'TOS Club'));
 	
 		
-		
-		
-		
+INSERT INTO attendee (event_id, member_id)
+VALUES (
+	(SELECT event_id FROM event WHERE event_name = 'TNG Reunion'), (SELECT member_id FROM member WHERE last_name = 'Troi')
+);
+	
+	
+INSERT INTO attendee (event_id, member_id)
+VALUES (
+	(SELECT event_id FROM event WHERE event_name = 'TNG Reunion'), (SELECT member_id FROM member WHERE last_name = 'LaForge')
+	);
+	
+INSERT INTO attendee (event_id, member_id)
+VALUES	
+	(
+	(SELECT event_id FROM event WHERE event_name = 'TNG Reunion'), (SELECT member_id FROM member WHERE last_name = 'Picard')
+	);
+	
+INSERT INTO attendee (event_id, member_id)
+VALUES		
+	(
+	(SELECT event_id FROM event WHERE event_name = 'DS9 Reunion'), (SELECT member_id FROM member WHERE last_name = 'Garak')
+	);
+INSERT INTO attendee (event_id, member_id)
+VALUES	
+	(
+	(SELECT event_id FROM event WHERE event_name = 'DS9 Reunion'), (SELECT member_id FROM member WHERE last_name = 'Sisko')
+	);
+INSERT INTO attendee (event_id, member_id)
+VALUES	
+	(
+	(SELECT event_id FROM event WHERE event_name = 'DS9 Reunion'), (SELECT member_id FROM member WHERE member.last_name = 'OBrien')
+	),
+	
+	(
+	(SELECT event_id FROM event WHERE event_name = 'Voyager Reunion'), (SELECT member_id FROM member WHERE last_name = 'Janeway')
+	),	
+	(
+	(SELECT event_id FROM event WHERE event_name = 'Voyager Reunion'), (SELECT member_id FROM member WHERE last_name = 'Kim')
+	),	
+	(
+	(SELECT event_id FROM event WHERE event_name = 'TOS Reunion'), (SELECT member_id FROM member WHERE last_name = 'Chapel')
+	),	
+	(
+	(SELECT event_id FROM event WHERE event_name = 'TOS Reunion'), (SELECT member_id FROM member WHERE last_name = 'Earp')
+	);
+	
+
+INSERT INTO member_group (member_id, group_id)
+VALUES (
+		(SELECT member_id FROM member WHERE last_name = 'Troi'), (SELECT group_id FROM interest_group WHERE group_name = 'TNG Club')
+		),
+		(
+		(SELECT member_id FROM member WHERE last_name = 'LaForge'), (SELECT group_id FROM interest_group WHERE group_name = 'TNG Club')
+		),
+		(
+		(SELECT member_id FROM member WHERE last_name = 'Picard'), (SELECT group_id FROM interest_group WHERE group_name = 'TNG Club')
+		),
+		(
+		(SELECT member_id FROM member WHERE last_name = 'Garak'), (SELECT group_id FROM interest_group WHERE group_name = 'DS9 Club')
+		),
+		(
+		(SELECT member_id FROM member WHERE last_name = 'Sisko'), (SELECT group_id FROM interest_group WHERE group_name = 'DS9 Club')
+		),
+		(
+		(SELECT member_id FROM member WHERE last_name = 'OBrien'), (SELECT group_id FROM interest_group WHERE group_name = 'DS9 Club')
+		),
+		(
+		(SELECT member_id FROM member WHERE last_name = 'Janeway'), (SELECT group_id FROM interest_group WHERE group_name = 'Voyager Club')
+		),
+		(
+		(SELECT member_id FROM member WHERE last_name = 'Kim'), (SELECT group_id FROM interest_group WHERE group_name = 'Voyager Club')
+		),
+		(
+		(SELECT member_id FROM member WHERE last_name = 'Chapel'), (SELECT group_id FROM interest_group WHERE group_name = 'TOS Club')
+		),
+		(
+		(SELECT member_id FROM member WHERE last_name = 'Earp'), (SELECT group_id FROM interest_group WHERE group_name = 'TOS Club')
+		);
 
 

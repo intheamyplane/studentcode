@@ -8,7 +8,7 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JdbcParkDao implements ParkDao {
+public class 4JdbcParkDao implements ParkDao {
 
     private final JdbcTemplate jdbcTemplate;
 
