@@ -401,13 +401,13 @@ public class Exercises {
     public String stringX(String str) {
         String newString = "";
         for (int i = 0; i < str.length(); i++) {
-            if (str.substring(i, i + 1) == "x") {
+                if (i != 0 && i != str.length()) {
+                    newString = newString;
 
-                if (i != 0 || i != str.length() - 1) {
+
                 }
-                continue;
-            } else {
-                newString = newString + str.substring(i, i + 1);
+            else {
+                newString += str.charAt(i);
             }
 
 
@@ -434,8 +434,17 @@ public class Exercises {
      stringYak("yak123ya") → "123ya"
      */
     public String stringYak(String str) {
+        String newString = "";
+        for(int i=0; i<str.length();i++){
 
-        return null;
+             if (str.substring(i,i+1).equals("y")&&str.substring(i+1, i+2).equals("a")&&str.substring(i+2,i+3).equals("k")) {
+                 newString= newString;
+            }else{
+                 newString += str.substring(i,i+3);
+             }
+        }
+
+        return newString;
     }
 
 }

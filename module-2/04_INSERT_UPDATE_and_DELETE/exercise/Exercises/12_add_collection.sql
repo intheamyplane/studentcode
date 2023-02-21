@@ -5,8 +5,7 @@ VALUES ('Bill Murray Collection');
 
 UPDATE movie
 SET collection_id = (SELECT collection_id FROM collection WHERE collection_name = 'Bill Murray Collection')
-	JOIN movie_actor ON movie_actor.movie_id = movie.movie_id
-	JOIN person ON person.person_id = movie_actor.actor_id
-WHERE actor_id = (SELECT person_id FROM person WHERE person_name = 'Bill Murray');
+FROM movie_actor
+WHERE movie_actor.movie_id = movie.movie_id AND actor_id = (SELECT person_id FROM person WHERE person_name = 'Bill Murray');
 
 
