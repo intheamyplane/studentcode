@@ -161,3 +161,15 @@ VALUES (
 		);
 
 
+SELECT first_name, last_name, group_name
+FROM member
+	JOIN member_group ON member_group.member_id = member.member_id
+	JOIN interest_group ON interest_group.group_id = member_group.group_id
+WHERE group_name = 'TNG Club';
+
+SELECT first_name, last_name, description
+FROM member
+	JOIN attendee ON attendee.member_id = member.member_id
+	JOIN event ON event.event_id = attendee.event_id
+WHERE event_name = 'DS9 Reunion';
+

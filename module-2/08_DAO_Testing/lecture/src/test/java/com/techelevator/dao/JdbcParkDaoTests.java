@@ -25,7 +25,8 @@ public class JdbcParkDaoTests extends BaseDaoTests {
 
     @Test
     public void getPark_returns_correct_park_for_id() {
-        Assert.fail();
+        Park park= sut.getPark(PARK_1.getParkId());
+        assertParksMatch(PARK_1, park);
     }
 
     @Test

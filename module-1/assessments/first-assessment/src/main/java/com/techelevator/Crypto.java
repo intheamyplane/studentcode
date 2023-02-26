@@ -101,10 +101,10 @@ public class Crypto {
         encryptedAlphabet[25] = "Y";
 
         String encryptedString = "";
-        for (int i = 0; i < strToEncrypt.length(); i++) {
+        for (int i = 0; i < strToEncrypt.length()-1; i++) {
 
 
-            encryptedString += (strToEncrypt.replace(alphabet[i], encryptedAlphabet[i]));
+            encryptedString = encryptedString + (strToEncrypt.replace(alphabet[i], encryptedAlphabet[i]));
 
 
         }
