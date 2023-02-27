@@ -40,7 +40,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
 		String sql = "SELECT DISTINCT employee_id, department_id, first_name, last_name, birth_date, hire_date\n" +
 				"FROM employee\n" +
 				"WHERE first_name LIKE ? AND last_name LIKE ?;";
-		firstNameSearch = "%" + lastNameSearch + "%";
+		firstNameSearch = "% " + lastNameSearch + "%";
 		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, firstNameSearch, lastNameSearch);
 		while(rowSet.next()){
 			employees.add(mapRowToEmployee(rowSet));
