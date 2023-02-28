@@ -3,6 +3,9 @@ package com.techelevator.hotels.services;
 import com.techelevator.hotels.model.Hotel;
 import com.techelevator.hotels.model.Reservation;
 import com.techelevator.util.BasicLogger;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
@@ -18,7 +21,13 @@ public class HotelService {
      */
     public Reservation addReservation(Reservation newReservation) {
         // TODO: Implement method
-        return null;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Reservation> payload = new HttpEntity<>(newReservation);
+
+        //http://localhost:3000/reservations
+        return this.restTemplate.postForObject(API_BASE_URL + "reservations", payload, Reservation.class);
+
     }
 
     /**
