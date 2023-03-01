@@ -10,6 +10,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.techelevator.auctions.model.Auction;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AuctionService {
 
     public static String API_BASE_URL = "http://localhost:3000/auctions/";
@@ -17,19 +20,65 @@ public class AuctionService {
 
 
     public Auction add(Auction newAuction) {
-        // place code here
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Auction> payload = new HttpEntity<>(newAuction, headers);
+
+        try {
+            return restTemplate.postForObject(API_BASE_URL, payload, Auction.class);
+        } catch (RestClientResponseException e) {
+            BasicLogger.log(String.format("%s:%s while adding an auction", e.getRawStatusCode(), e.getStatusText()));
+        } catch (ResourceAccessException rae) {
+            BasicLogger.log("unable to reach server");
+        }
         return null;
     }
 
     public boolean update(Auction updatedAuction) {
-        // place code here
-        return false;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Auction> payload = new HttpEntity<>(updatedAuction, headers);
+
+
+        boolean success = false;
+
+        try {
+            restTemplate.put(API_BASE_URL+updatedAuction.getId(), payload);
+            success = true;
+        } catch (RestClientResponseException e) {
+            BasicLogger.log(String.format("%s:%s while adding an auction", e.getRawStatusCode(), e.getStatusText()));
+        } catch (ResourceAccessException rae) {
+            BasicLogger.log("unable to reach server");
+        }
+
+
+
+        return success;
     }
 
     public boolean delete(int auctionId) {
-        // place code here
-        return false;
+        boolean success = false;
+        try {
+            restTemplate.delete(API_BASE_URL + auctionId);
+            success = true;
+        } catch (RestClientResponseException e) {
+            BasicLogger.log(e.getRawStatusCode() + " : " + e.getStatusText());
+        } catch (ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
+        return success;
+
     }
+
+
+//    final Map<String, String> templateTokens = new HashMap<>();
+//        templateTokens.put("id", Integer.toString(id));
+//        this.restTemplate.delete(API_BASE_URL+"reservations/{id}", templateTokens);
+//
+//        return true;
+
+
+
 
     public Auction[] getAllAuctions() {
         Auction[] auctions = null;
