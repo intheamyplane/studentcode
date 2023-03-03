@@ -1,5 +1,8 @@
 package com.techelevator;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class BoxSorter {
     /**
      * You are given an array of boxes (Box Objects as shown above). Use the 'sortByVolume()' method to sort the array by box volume
@@ -36,7 +39,23 @@ public class BoxSorter {
     }
 
     public Box[] sortByVolume(Box[] input, SortOrder order) {
-        // your code goes here
+        if(input==null){
+            return null;
+        }
+        if (input.length<2){
+            return input;
+        }
+
+        // add bubble sort, insertion sort, comparator
+
+        Arrays.sort(input, Comparator.comparing(Box::getVolume));
+        if(order == SortOrder.ASC){
+
+        }
+
+
         return null;
     }
 }
+
+b

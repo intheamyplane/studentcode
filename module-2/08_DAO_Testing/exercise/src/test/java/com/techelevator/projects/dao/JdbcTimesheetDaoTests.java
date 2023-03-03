@@ -21,10 +21,14 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
 
     private JdbcTimesheetDao dao;
 
+    private Timesheet testTimesheet;
+
 
     @Before
+
     public void setup() {
         dao = new JdbcTimesheetDao(dataSource);
+        testTimesheet = new Timesheet(5, 2, 2, LocalDate.now(), 1.0, false, "Timesheet 5");
     }
 
     @Test
@@ -71,16 +75,23 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
 
     @Test
     public void createTimesheet_returns_timesheet_with_id_and_expected_values() {
-        Timesheet testTimesheet = new Timesheet(0, 3, 2, "2021-02-02", 0.5, true, "Timesheet 5");
+
         Timesheet createdTimesheet = dao.createTimesheet(testTimesheet);
+        Assert.assertNotNull(createdTimesheet);
         int idOfCreatedTimesheet = createdTimesheet.getTimesheetId();
 
         Assert.assertTrue(idOfCreatedTimesheet > 0);
+        testTimesheet.setTimesheetId(idOfCreatedTimesheet);
+        assertTimesheetsMatch(testTimesheet, createdTimesheet);
     }
 
     @Test
     public void created_timesheet_has_expected_values_when_retrieved() {
-        Assert.fail();
+        Timesheet createdTimesheet = dao.createTimesheet(testTimesheet);
+        int idCreatedTimesheet = createdTimesheet.getTimesheetId();
+        Timesheet result = dao.getTimesheet(idCreatedTimesheet);
+
+        assertTimesheetsMatch(createdTimesheet, result);
     }
 
     @Test

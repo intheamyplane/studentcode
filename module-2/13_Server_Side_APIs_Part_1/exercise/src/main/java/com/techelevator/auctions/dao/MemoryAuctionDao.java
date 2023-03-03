@@ -32,7 +32,7 @@ public class MemoryAuctionDao implements AuctionDao {
     }
 
     @Override
-    public Auction create(Auction auction) {
+    public Auction create(Auction auction, int id) {
         auction.setId(getMaxIdPlusOne());
         auctions.add(auction);
         return auction;

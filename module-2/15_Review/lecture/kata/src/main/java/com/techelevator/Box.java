@@ -6,6 +6,7 @@ public class Box {
         this.width = width;
         this.length = length;
         this.name = name;
+
     }
 
     private int height;
@@ -28,6 +29,10 @@ public class Box {
     public String getName() {
         return name;
     }
+
+    public int getVolume() {
+        int volume= getHeight() *getLength() *getWidth();
+    return volume;}
 
     @Override
     public String toString() {
