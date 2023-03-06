@@ -27,22 +27,22 @@ changed "employee Id to project Id in "WHERE" statement
 
 Bug 3
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: updated_timesheet_has_expected_values_when_retrieved()
 
-Expected output:
+Expected output: output expected to include "billable"
 
-Actual output:
+Actual output: did not include "billable"
 
 How did you fix this bug?
-
+Added "updatedTimesheet.isBillable()" to the jdbc timesheet dao
 
 Bug 4
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: getBillableHours_returns_correct_total()
 
-Expected output:
+Expected output: gets hours worked where billable is true
 
-Actual output:
+Actual output: all hours
 
-How did you fix this bug?
+How did you fix this bug? added "AND billable = true" to sql WHERE statement
 
