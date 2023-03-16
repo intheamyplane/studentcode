@@ -12,7 +12,7 @@ body {
 }
 body > aside {
   position: fixed;
-  border: 1px solid rgba(0, 173, 238, 0.4);
+  border-right: 1px solid rgba(0, 173, 238, 0.4);
   height: 100vh;
   width: 200px;
 }
@@ -29,6 +29,8 @@ body > aside > img {
 
 body > main {
   margin-left: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 ul {
@@ -56,6 +58,19 @@ ul {
  }
 
 
- #place-holder{
+ #placeholder {
    width: 100vw;
+ }
+
+ section>div{
+   width: 33%;
+   display: inline-block;
+ }
+
+ section>div>h2{
+   color:#8CC36F;
+ }
+
+ section>div>h2>i{
+   padding: 5px;
  }
