@@ -43,14 +43,23 @@ ul {
    border-bottom: solid  rgba(0, 173, 238, 0.4);
    color:#00ADEE;
    font-weight: bold;
-   text-decoration: none;
    width: 90%;
    margin: auto;
    list-style: none;
    padding: 10px;
-
-   
  }
+
+ /* li > a {
+   text-decoration: none;
+  
+ }
+  li:first-child {
+    text-decoration: underline;
+  } */
+
+  li:not(li:first-child) a {
+    text-decoration: none;
+  }
 
  body>main>header>img{
    height: 100px;
