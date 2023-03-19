@@ -4,3 +4,29 @@ body{
 
 
 }
+.main-headline{
+    text-align: center;
+
+}
+#welcome{
+    text-align: center;
+    align-content: center;
+}
+#welcome>img{
+    width: 400px;
+}
+
+#facts-section>h2{
+    text-decoration: underline;
+}
+
+#quotes-section>h2{
+    text-decoration: underline;
+}
+
+#links-section>h2{
+    text-decoration: underline;
+}
+blockquote{
+    font-style: italic;
+}
