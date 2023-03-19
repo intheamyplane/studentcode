@@ -2,11 +2,16 @@ body {
   margin: 20px;
   padding: 0;
   font-size: 2.5em;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
   background-color: #F0F0F0;
   height: 500px;
+  display: flex;
+  align-items: center;
+ 
 }
 
 .box {

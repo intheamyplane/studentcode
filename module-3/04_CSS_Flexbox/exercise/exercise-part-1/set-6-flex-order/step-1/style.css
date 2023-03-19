@@ -2,6 +2,7 @@ body {
   margin: 20px;
   padding: 0;
   font-family: sans-serif;
+  
 }
 
 .bio {
@@ -9,10 +10,20 @@ body {
   padding: 20px;
   margin-bottom: 20px;
   border: solid 1px #555;
+  display: flex;
 }
 
 .bio img {
   width: 150px;
   border-radius: 999px;
   margin: 0 10px;
+  display: flex;
+  
+}
+.bio:nth-child(1){
+  display: flex;
+}
+.bio:nth-child(2)>img{
+  display: flex;
+  order: 1;
 }
