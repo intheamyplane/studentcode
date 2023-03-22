@@ -12,6 +12,10 @@ function variables() {
   // Declares a variable where the value cannot be changed
   // Declares a variable those value can be changed
   // Declares a variable that will always be an array
+
+  const aConstant = 1;
+  let somethingThatCanChange = 'hello';
+  console.log(somethingThatCanChange);
 }
 
 

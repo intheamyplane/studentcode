@@ -11,6 +11,22 @@
 		iqTest("") → 0 // there are no numbers in the given set
         iqTest("2 2 4 6") → 0 // all numbers are even, therefore there is no position of an odd number
 */
+                function iqTest(given){
+                    let evenCounter = 0;
+                    let oddCounter = 0;
+                    let positions = new Map(value, location);
+                    for(let i = 0; i < given.length; i++){
+                        if(given[i]%2 == 0){
+                            evenCounter++;
+                            positions.set(given[i], i+1);
+                        }
+                        else (given[i]%2 != 0){
+                            oddCounter++;
+                            positions.set(given[i], i+1)
+                        }
+                    }
+                  
+                }
 
 /*
 2. **titleCase** Write a function that will convert a string into title case, given an optional 
