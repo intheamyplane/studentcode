@@ -20,6 +20,26 @@
  * @returns {boolean} true if they are admitted
  */
 
+        function isAdmitted(gpa, satScore=0, recommendation=false) {
+           let isAdmitted = false;
+           if(gpa>4.0){
+               isAdmitted = true;
+           }
+           else if(satScore>1300) {
+               isAdmitted = true;
+           }
+           else if(satScore>1200 && recommendation == true){
+               isAdmitted = true;
+           }
+           else if(gpa>3.0 && recommendation == true){
+               isAdmitted = true;
+           }
+           else {
+               isAdmitted = false;
+           }
+           return isAdmitted;
+        }
+
 /**
  * Write a function called useParameterToFilterArray that accepts a filter function
  * as a parameter. Use this function to filter unfilteredArray and return the result.
@@ -28,6 +48,17 @@
  * @returns {number[]} the filtered array
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
+
+function useParameterToFilterArray(filterFunction, arr){
+    let result = new Array();
+
+
+    // const filteredNumbers = numbersToFilter.filter( (number) => {
+        
+    //     return number % 3 === 0;
+    // });
+
+}
 
 /**
  * Write a function called makeNumber that takes two strings
@@ -41,6 +72,11 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @param {string} [second=''] the second string of digits to concatenate
  * @returns {number} the resultant number
  */
+        function makeNumber(first, second=''){
+            let result = first + second;
+            return Number.parseInt(result);
+        }
+    
 
 /**
  * Write a function called addAll that takes an unknown number of parameters
@@ -49,12 +85,28 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @param {...number} num a series of numbers to add together
  * @returns {number} the sum of all the parameters (or arguments)
  */
+     function addAll() { // No parameters defined, but we still might get some
+         let result = 0;
+         for(let i = 0; i < arguments.length; i++) {
+             result += arguments[i];
+             }
+         return result;
+    }
 
 /*
  * Write and document a function called makeHappy that takes
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
  */
+
+    function makeHappy(arr) {
+        let happyArray = [];
+        arr.forEach( (string) => {
+            string = 'Happy ' + string;
+            happyArray.push(string);
+        });
+        return happyArray;
+    }
 
 /*
  * Write and document a function called getFullAddressesOfProperties
