@@ -6,6 +6,8 @@ public class Recipe {
     private String ingredients;
     private String description;
 
+    public Recipe(){}
+
     public Recipe(int recipeId, String name, String ingredients, String description){
         this.recipeId = recipeId;
         this.name = name;
