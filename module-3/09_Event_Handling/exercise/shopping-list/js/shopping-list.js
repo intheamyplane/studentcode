@@ -36,3 +36,73 @@ function displayGroceries() {
     ul.appendChild(li);
   });
 }
+
+function toggleAll(items) {
+  const toggleAllButton = document.getElementById('toggleAll');
+  items.forEach((item) =>{
+  if (allItemsIncomplete){
+    
+      item.classList.add('completed');
+      item.querySelector('i').classList.add('completed');
+      
+    }else {
+      item.classList.remove('completed');
+      item.querySelector('i').classList.remove('completed');
+    
+  
+    }
+  });
+  allItemsIncomplete = !allItemsIncomplete; 
+  changeGreeting(toggleAllButton);
+
+}
+
+
+
+  function changeGreeting(button) {
+    if (allItemsIncomplete) {
+      button.innerText = "Mark All Complete";
+    } else {
+      button.innerText = "Mark All Incomplete";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setPageTitle();
+  displayGroceries();
+
+  const listItems = document.querySelectorAll('li');
+
+  listItems.forEach((listItem) => {
+    //click to mark complete
+    listItem.addEventListener('click', () => {
+      if(!listItem.classList.contains('completed')) {
+        listItem.classList.add('completed');
+        listItem.querySelector('i').classList.add('completed');
+      }
+    });
+
+    //double click to removed completed class
+    listItem.addEventListener('dblclick', () => {
+      if(listItem.classList.contains('completed')) {
+        listItem.classList.remove('completed');
+        listItem.querySelector('i').classList.remove('completed');
+      }
+    });
+  
+  });
+
+
+  //mark all tasks completed
+  const toggleAllButton = document.getElementById('toggleAll');
+
+  toggleAllButton.addEventListener('click', () => {
+   toggleAll(listItems);
+  });
+
+
+// const changeButton = document.getElementById('change-greeting');
+// changeButton.addEventListener('click', changeGreeting);
+});
+
+

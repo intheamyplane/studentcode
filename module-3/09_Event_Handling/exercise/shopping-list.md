@@ -1,4 +1,4 @@
-# Event Handlers Exercise
+n# Event Handlers Exercise
 
 In this exercise, you'll build on the shopping list exercise that you've been working on. You can find the starting code for this exercise and the automated tests in the `shopping-list` directory.
 
