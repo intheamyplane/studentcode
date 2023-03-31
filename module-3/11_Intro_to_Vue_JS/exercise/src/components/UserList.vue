@@ -11,19 +11,29 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text" id="firstNameFilter"/></td>
-        <td><input type="text" id="lastNameFilter"/></td>
-        <td><input type="text" id="usernameFilter"/></td>
-        <td><input type="text" id="emailFilter"/></td>
+        <td><input type="text" v-model="search.firstName" id="firstNameFilter"/></td>
+        <td><input type="text" v-model="search.lastName" id="lastNameFilter"/></td>
+        <td><input type="text" v-model="search.username" id="usernameFilter"/></td>
+        <td><input type="text" v-model="search.emailAddress" id="emailFilter"/></td>
         <td>
-          <select id="statusFilter">
+          <select id="statusFilter" v-model="search.status">
             <option value="">Show All</option>
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
           </select>
         </td>
       </tr>
-      <!-- user listing goes here -->
+      <tr v-for="user in filteredList" v-bind:key="user.username"  v-bind:class="{ 'inactive': user.status === 'Inactive' }">
+        
+        <td> {{user.firstName}}</td>
+        <td> {{user.lastName}}</td>
+        <td> {{user.username}}</td>
+        <td> {{user.emailAddress}} </td>
+        <td> {{user.status}} </td> 
+
+      </tr>
+    
+     
     </tbody>
   </table>
 </template>
@@ -34,15 +44,36 @@ export default {
   data() {
     return {
       users: [
-        { firstName: 'John', lastName: 'Smith', username: 'jsmith', emailAddress: 'jsmith@gmail.com', status: 'Active' },
-        { firstName: 'Anna', lastName: 'Bell', username: 'abell', emailAddress: 'abell@yahoo.com', status: 'Active' },
-        { firstName: 'George', lastName: 'Best', username: 'gbest', emailAddress: 'gbest@gmail.com', status: 'Inactive' },
-        { firstName: 'Ben', lastName: 'Carter', username: 'bcarter', emailAddress: 'bcarter@gmail.com', status: 'Active' },
-        { firstName: 'Katie', lastName: 'Jackson', username: 'kjackson', emailAddress: 'kjackson@yahoo.com', status: 'Active' },
-        { firstName: 'Mark', lastName: 'Smith', username: 'msmith', emailAddress: 'msmith@foo.com', status: 'Inactive' }
-      ]
+        { firstName: 'John', lastName: 'Smith', username: 'jsmith', emailAddress: 'jsmith@gmail.com', status: 'Active'},
+        { firstName: 'Anna', lastName: 'Bell', username: 'abell', emailAddress: 'abell@yahoo.com', status: 'Active'},
+        { firstName: 'George', lastName: 'Best', username: 'gbest', emailAddress: 'gbest@gmail.com', status: 'Inactive'},
+        { firstName: 'Ben', lastName: 'Carter', username: 'bcarter', emailAddress: 'bcarter@gmail.com', status: 'Active'},
+        { firstName: 'Katie', lastName: 'Jackson', username: 'kjackson', emailAddress: 'kjackson@yahoo.com', status: 'Active'},
+        { firstName: 'Mark', lastName: 'Smith', username: 'msmith', emailAddress: 'msmith@foo.com', status: 'Inactive'}
+      ],
+      search: {
+        firstName: '',
+        lastName: '',
+        username: '',
+        emailAddress: '',
+        status: ''
+      }
+      
+    }
+  },
+  computed: {
+    filteredList(){
+      return this.users.filter(
+        user => user.firstName.toLowerCase().includes(this.search.firstName.toLowerCase())
+         && user.lastName.toLowerCase().includes(this.search.lastName.toLowerCase())
+         && user.username.toLowerCase().includes(this.search.username.toLowerCase())
+        && user.emailAddress.toLowerCase().includes(this.search.emailAddress.toLowerCase())
+        && user.status.includes(this.search.status));
+
+
     }
   }
+  
 }
 </script>
 
