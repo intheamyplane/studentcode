@@ -52,7 +52,7 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnActivateDeactivate">Activate or Deactivate</button>
+            <button v-on:click="toggleStatus(user.id)" class="btnActivateDeactivate">{{buttonText(user.status)}}</button>
           </td>
         </tr>
       </tbody>
@@ -64,26 +64,26 @@
       <button>Delete Users</button>
     </div>
 
-    <button>Add New User</button>
+    <button v-on:click="toggleNewUser">Add New User</button>
 
-    <form id="frmAddNewUser">
+    <form v-show="showForm" id="frmAddNewUser">
       <div class="field">
         <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" />
+        <input v-model="newUser.firstName" type="text" name="firstName" />
       </div>
       <div class="field">
         <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" />
+        <input v-model="newUser.lastName" type="text" name="lastName" />
       </div>
       <div class="field">
         <label for="username">Username:</label>
-        <input type="text" name="username" />
+        <input v-model="newUser.username" type="text" name="username" />
       </div>
       <div class="field">
         <label for="emailAddress">Email Address:</label>
-        <input type="text" name="emailAddress" />
+        <input v-model="newUser.emailAddress" type="text" name="emailAddress" />
       </div>
-      <button type="submit" class="btn save">Save User</button>
+      <button v-on:click="addUser" type="submit" class="btn save">Save User</button>
     </form>
   </div>
 </template>
@@ -93,6 +93,8 @@ export default {
   name: "user-list",
   data() {
     return {
+    
+      showForm: false,
       filter: {
         firstName: "",
         lastName: "",
@@ -100,7 +102,7 @@ export default {
         emailAddress: "",
         status: ""
       },
-      nextUserId: 7,
+      nextUserId: '',
       newUser: {
         id: null,
         firstName: "",
@@ -164,7 +166,45 @@ export default {
   methods: {
     getNextUserId() {
       return this.nextUserId++;
+    },
+    addUser() {
+      let newUserObject = this.newUser;
+
+      newUserObject.id = this.getNextUserId;
+      newUserObject.firstName= this.filter.firstName,
+      newUserObject.lastName= this.filter.lastName,
+      newUserObject.username= this.filter.username,
+      newUserObject.emailAddress= this.filter.emailAddress,
+
+      this.users.push(newUserObject);
+    },
+    toggleNewUser(){
+      this.showForm = !this.showForm
+    },
+    toggleStatus(id) {
+      for (let i = 0; i < this.users.length; i++) {
+        if(id == this.users[i].id){
+          if(this.users[i].status == 'Active'){
+            this.users[i].status = 'Inactive'
+          } else if (this.users[i].status == 'Inactive'){
+            this.users[i].status = 'Active' 
+          }
+        }
+      }
+    },
+    buttonText(status){
+      let btnText = ""
+      if(status == 'Active'){
+        btnText = "Deactivate"
+      }else if (status == 'Inactive'){
+        btnText = 'Activate'
+      }
+
+      return btnText
     }
+
+
+
   },
   computed: {
     filteredList() {
