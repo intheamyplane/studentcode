@@ -9,9 +9,13 @@
         v-bind:class="{ finished: todo.done }"
       >
         <input type="checkbox" v-model="todo.done" />
-        {{ todo.name }}
+        {{ todo.name }} <span class= "delete">x</span>
       </li>
     </ul>
+    <form v-on:submit.prevent="createTodo">
+      <input type= "text" v-model="newItem" placeholder="Add new Todo" />
+      <button type = "submit" class= "btn save">Save</button>
+    </form>
   </div>
 </template>
 
@@ -20,6 +24,7 @@ export default {
   data() {
     return {
       filterText: "",
+      newItem: '',
       todos: [
         {
           name: "Wake up",
@@ -43,6 +48,19 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    deleteTodo(todoToDelete){
+      this.todos= this.todos.filter((todo)=> {
+        return todo !== todoToDelete;
+      });   }
+  },
+  createTodo(){
+    this.todos.push({
+      name: this.newItem,
+      done: false
+    });
+    this.newItem = '';
   },
   computed: {
     filteredTodos() {
@@ -108,5 +126,9 @@ form input {
 }
 form .btn.save {
   font-size: 1em;
+}
+.delete{
+  color: red;
+  cursor: pointer;
 }
 </style>
