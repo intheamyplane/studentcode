@@ -11,10 +11,18 @@
 </template>
 
 <script>
+import topics from '../topics/topics';
+import TopicList from './TopicList.vue';
+
 export default {
   name: 'topic-details',
+  components: {
+    TopicList,
+  },
   props: {
-    'topicId': Number
+    'topicId': Number,
+    'messageId': Number
+
   },
   data() {
     return {
@@ -24,6 +32,14 @@ export default {
         messages: []
       },
     }
+  },
+  created() {
+    const topicId = this.$route.params.topicId;
+    const messageId = this.$route.params.messageId;
+    topics.getMessage(topicId, messageId).then((message) => {
+      this.message = message;
+    
+    });
   }
 }
 </script>

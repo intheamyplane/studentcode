@@ -6,15 +6,28 @@
   </div>
 </template>
 
+
 <script>
+import topics from '../topics/topics';
+
 export default {
   name: 'topic-list',
   data() {
     return {
       topics: []
-    }
+    };
+  },
+  methods: {
+    viewTopic(id) {
+      this.$router.push(`/topic/${id}`);
+    },
+    created() {
+    topics.list().then((response) => {
+      this.docs = response.data;
+    });
   }
 }
+};
 </script>
 
 <style>

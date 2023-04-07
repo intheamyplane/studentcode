@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" v-model='selectAll' v-bind:checked='selectedUsers.length === users.length ? selectAll = true : selectAll = false' v-on:change='pushSelectedUsers' id="selectAll" />
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -58,10 +58,10 @@
       </tbody>
     </table>
 
-    <div v-bind:disabled="selectedUsers.length >0" class="all-actions">
-      <button v-on:submit.prevent="activateUsers" >Activate Users</button>
-      <button v-on:submit.prevent="deactiveUsers">Deactivate Users</button>
-      <button v-on:submit.prevent="deleteUsers">Delete Users</button>
+    <div class="all-actions">
+      <button v-bind:disabled="selectedUsers.length==0" v-on:click='activateUsers' >Activate Users</button>
+      <button v-bind:disabled="selectedUsers.length==0" v-on:click='deactivateUsers'>Deactivate Users</button>
+      <button v-bind:disabled="selectedUsers.length==0" v-on:click='deleteUsers'>Delete Users</button>
     </div>
 
     <button v-on:click="toggleNewUser">Add New User</button>
@@ -94,6 +94,7 @@ export default {
   data() {
     return {
       selectedUsers: [],
+      selectAll: false,
     
       showForm: false,
       filter: {
@@ -165,6 +166,16 @@ export default {
     };
   },
   methods: {
+    pushSelectedUsers(){
+      if(this.selectAll){
+        this.selectedUsers = [];
+        this.users.forEach((user) =>{
+          this.selectedUsers.push(user.id)
+        });
+      }else{
+        this.selectedUsers = [];
+      }
+    },
     getNextUserId() {
       return this.nextUserId++;
     },
@@ -175,11 +186,11 @@ export default {
     },
 
     deleteUsers(){
-      this.users = this.users.filter((user)=> {
-        return user !== this.selectedUsers;
-      });
-
-
+      this.selectedUsers.forEach((userId) => {
+        let deleted = this.users.find((user) => 
+          user.id === userId);
+        this.users.splice(this.users.indexOf(deleted), 1);
+      })
       this.selectUser= false;
       this.selectedUsers= [];
       
@@ -240,22 +251,28 @@ export default {
       return btnText
     },
     activateUsers(){
-    this.selectedUsers.forEach((user)=>{
-      this.user.status = 'Active';
+    this.selectedUsers.forEach((userId)=>{
+      let userToActivate = this.users.find(user => user.id == userId);
+      userToActivate.status = 'Active';
+      
     });
     this.selectedUsers = [];
 
     },
 
     deactivateUsers(){
-      this.selectedUsers.forEach((user)=>{
-        this.user.status = 'Inactive'
+      this.selectedUsers.forEach((userId)=>{
+        let userToDelete = this.users.find(user => user.id == userId)
+        userToDelete.status = 'Inactive';
       });
       this.selectedUsers= [];
     },
 
+  },
+
 
   computed: {
+ 
     filteredList() {
       let filteredUsers = this.users;
       if (this.filter.firstName != "") {
