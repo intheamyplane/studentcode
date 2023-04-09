@@ -1,14 +1,16 @@
 <template>
   <div class="topic-list">
     <div v-for="topic in topics" v-bind:key="topic.id" class="topic">
+      <router-link :to="{name: 'Messages', params: {id: topic.id}}">
       {{ topic.title }}
+      </router-link>
     </div>
   </div>
-</template>
+</template> 
 
 
 <script>
-import topics from '../topics/topics';
+import topicService from '../services/topicService';
 
 export default {
   name: 'topic-list',
@@ -18,15 +20,14 @@ export default {
     };
   },
   methods: {
-    viewTopic(id) {
-      this.$router.push(`/topic/${id}`);
-    },
+ 
+  },
     created() {
-    topics.list().then((response) => {
-      this.docs = response.data;
-    });
+      topicService.list().then((response) => {
+        this.topics=response.data;
+      })
+    
   }
-}
 };
 </script>
 

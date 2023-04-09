@@ -6,10 +6,10 @@ const http = axios.create({
 
 export default {
 
-    getTopics() {
+    list() {
       return http.get('/topics');
     },
-    getDetails(id) {
+    getTopic(id) {
         return http.get(`/topics/${id}`)
       },  
   

@@ -11,14 +11,11 @@
 </template>
 
 <script>
-import topics from '../topics/topics';
-import TopicList from './TopicList.vue';
+import topicService from '../services/topicService';
 
 export default {
   name: 'topic-details',
-  components: {
-    TopicList,
-  },
+ 
   props: {
     'topicId': Number,
     'messageId': Number
@@ -34,11 +31,10 @@ export default {
     }
   },
   created() {
-    const topicId = this.$route.params.topicId;
-    const messageId = this.$route.params.messageId;
-    topics.getMessage(topicId, messageId).then((message) => {
-      this.message = message;
-    
+    const topicId = this.$route.params.id;
+
+    topicService.getTopic(topicId).then((resp) => {
+      this.topic = resp.data;
     });
   }
 }

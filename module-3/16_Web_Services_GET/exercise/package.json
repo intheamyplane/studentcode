@@ -11,7 +11,7 @@
     "test:e2e-alone": "vue-cli-service test:e2e",
     "test:e2e-headless": "npm-run-all --parallel --race json-server-test test:e2e-alone-headless",
     "test:e2e-alone-headless": "vue-cli-service test:e2e --headless",
-    "json-server-test": "json-server ./db/readit.json --routes ./db/routes.json --quiet",
+    "json-server-test": "json-server ./db/readit.json --routes ./db/routes.json",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
