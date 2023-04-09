@@ -17,8 +17,8 @@ export default {
   name: 'topic-details',
  
   props: {
-    'topicId': Number,
-    'messageId': Number
+    'topicId': Number
+    
 
   },
   data() {

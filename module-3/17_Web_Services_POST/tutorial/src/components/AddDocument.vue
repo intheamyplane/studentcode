@@ -22,6 +22,7 @@
 <script>
 import moment from "moment";
 import faker from "faker";
+import DocsService from '../services/DocsService';
 
 const date = moment(new Date());
 
@@ -40,7 +41,15 @@ export default {
     };
   },
   methods: {
-    saveDocument() {},
+    saveDocument() {
+      DocsService.
+      create(this.document)
+      .then((response) => {
+        if (response.status === 201) {
+          this.$router.push("/");
+        }
+      })
+    },
     cancel() {
       this.$router.push("/");
     }
