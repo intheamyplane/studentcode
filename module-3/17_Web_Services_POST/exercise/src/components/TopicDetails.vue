@@ -38,7 +38,7 @@ export default {
         if (response.status === 200) {
           this.$store.commit("DELETE_MESSAGE", id);
         }
-      })
+      });
     }
   },
   created() {

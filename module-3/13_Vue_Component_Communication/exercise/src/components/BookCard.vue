@@ -6,7 +6,10 @@
 
 <script>
 export default {
-    name: 'book-card'
+    name: 'book-card',
+    props: {
+        book: Object
+    }
 }
 </script>
 

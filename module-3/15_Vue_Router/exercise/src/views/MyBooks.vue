@@ -1,8 +1,10 @@
 <template>
   <div>
     <reading-list />
+     <router-link to="/addBook" />
     
   </div>
+ 
 </template>
 
 
