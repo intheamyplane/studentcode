@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import TopicService from '../services/TopicService';
+
 import topicService from "../services/TopicService";
 
 export default {

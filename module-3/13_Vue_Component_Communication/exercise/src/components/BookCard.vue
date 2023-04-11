@@ -1,5 +1,8 @@
 <template>
   <div class="card">
+     <h2 class="book-title"> </h2>
+      <h3 class="book-author"> </h3>
+      <img v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" class="book-image" /> 
 
   </div>
 </template>
@@ -7,9 +10,7 @@
 <script>
 export default {
     name: 'book-card',
-    props: {
-        book: Object
-    }
+    props: ['cards']
 }
 </script>
 
